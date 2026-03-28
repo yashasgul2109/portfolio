@@ -8,7 +8,7 @@ const projectsData = [
   {
     title: 'JARVIS - AI Voice Assistant',
     description: 'A browser-based AI voice assistant featuring a dynamic dashboard. Processes voice commands and manages state efficiently to respond via a conversational UI. Built with a focus on seamless interaction and performant DOM updates.',
-    techStack: ['React.js', 'Tailwind CSS', 'Web Speech API', 'JS'],
+    techStack: ['Python'],
     github: 'https://github.com/yashasgul2109',
     live: '#',
     image: '/images/jarvis.png' // <-- add your image here
