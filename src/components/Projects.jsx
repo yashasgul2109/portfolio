@@ -1,4 +1,6 @@
 import React from 'react';
+import gtaImg from "../assets/images/GTA6.png";
+import portfolioImg from "../assets/images/Portfolio.png";
 import { motion } from 'framer-motion';
 import { Github, ExternalLink } from 'lucide-react';
 
@@ -9,13 +11,15 @@ const projectsData = [
     techStack: ['React.js', 'Tailwind CSS', 'Web Speech API', 'JS'],
     github: 'https://github.com/yashasgul2109',
     live: '#',
+    image: '/images/jarvis.png' // <-- add your image here
   },
   {
     title: 'GTA 6 Interactive Fan Hub',
     description: 'A content-heavy community landing page highlighting component-based architecture. Implemented responsive grid layouts using Tailwind to manage high-resolution media efficiently across devices.',
     techStack: ['React', 'HTML5', 'Tailwind CSS', 'Framer Motion'],
     github: 'https://github.com/yashasgul2109',
-    live: '#',
+    live: 'https://gta-6-three-eta.vercel.app/',
+    image: gtaImg
   },
   {
     title: 'Modular Developer Portfolio',
@@ -23,6 +27,7 @@ const projectsData = [
     techStack: ['React', 'Tailwind CSS', 'Framer Motion'],
     github: 'https://github.com/yashasgul2109',
     live: '#',
+    image: portfolioImg
   }
 ];
 
@@ -43,6 +48,7 @@ const Projects = () => {
           {projectsData.map((project, idx) => (
             <div key={project.title} className={`flex flex-col md:flex-row items-center gap-12 ${idx % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}>
               
+              {/* IMAGE SECTION */}
               <motion.div 
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -50,21 +56,25 @@ const Projects = () => {
                 transition={{ duration: 0.6 }}
                 className="w-full md:w-1/2 group relative cursor-pointer"
               >
-                {/* Monochromatic image placeholder */}
                 <div className="w-full h-64 md:h-[400px] bg-surface border border-surfaceBorder flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:border-white">
+                  <img 
+                    src={project.image} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    loading="lazy"
+                  />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
-                  <span className="text-muted font-mono tracking-widest text-sm uppercase z-20 group-hover:scale-110 transition-transform duration-500">&lt; Image /&gt;</span>
                 </div>
-                {/* Brutalist offset shadow */}
                 <div className="absolute top-4 -right-4 w-full h-full border border-surfaceBorder -z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500"></div>
               </motion.div>
 
+              {/* TEXT SECTION */}
               <motion.div 
                 initial={{ opacity: 0, x: idx % 2 === 0 ? 30 : -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className={`w-full md:w-1/2 flex flex-col z-20 ${idx % 2 === 0 ? 'md:items-start text-left' : 'md:items-start text-left'}`}
+                className={`w-full md:w-1/2 flex flex-col z-20 md:items-start text-left`}
               >
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 uppercase tracking-wide">
                   {project.title}
